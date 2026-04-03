@@ -36,7 +36,7 @@ export default function AdminPage() {
 
   async function crearProfesor(e) {
     e.preventDefault()
-    if (form.password.length < 6) { notify('La contraseña debe tener al menos 6 caracteres.','error'); return }
+    if (form.password.length < 6) { notify('La contrasena debe tener al menos 6 caracteres.','error'); return }
     const res = await fetch('/api/crear-usuario', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({...form, role:'profesor'})
@@ -54,17 +54,24 @@ export default function AdminPage() {
     loadData()
   }
 
-  if (loading) return 
+  if (loading) return (
+    
+
+      
 
 Cargando...
 
 
+    
+
+  )
 
   return (
-    <>
+    
+
       
 
-        ⚗️ FisicaLab
+        FisicaLab
         
 
           {[['profesores','Profesores'],['estudiantes','Estudiantes'],['grupos','Grupos']].map(([k,l])=>(
@@ -101,9 +108,9 @@ Grupos
 
         
 
-
         {tab==='profesores' && (
-          <>
+          
+
             
 
               
@@ -132,7 +139,7 @@ Crear cuenta de profesor
 Nombre completosetForm(f=>({...f,full_name:e.target.value}))} placeholder="Ej: Carlos Morales" required/>
 
                     
-ID / CódigosetForm(f=>({...f,codigo:e.target.value}))} placeholder="Ej: P-0023" required/>
+ID CodigosetForm(f=>({...f,codigo:e.target.value}))} placeholder="Ej: P-0023" required/>
 
                   
 
@@ -142,7 +149,7 @@ ID / CódigosetForm(f=>({...f,codigo:e.target.value}))} placeholder="Ej: P-0023"
 CorreosetForm(f=>({...f,email:e.target.value}))} placeholder="profesor@uni.edu" required/>
 
                     
-Contraseña temporalsetForm(f=>({...f,password:e.target.value}))} placeholder="Min. 6 caracteres" required/>
+Contrasena temporalsetForm(f=>({...f,password:e.target.value}))} placeholder="Min. 6 caracteres" required/>
 
                   
 
@@ -156,7 +163,7 @@ Contraseña temporalsetForm(f=>({...f,password:e.target.value}))} placeholder="M
 
               {profesores.length===0 && 
 
-No hay profesores registrados aún.
+No hay profesores registrados aun.
 
 }
               {profesores.map(p=>(
@@ -176,7 +183,7 @@ No hay profesores registrados aún.
 
                     
 
-Código: {p.codigo||'—'} · {new Date(p.created_at).toLocaleDateString('es-CO')}
+Codigo: {p.codigo||'-'} - {new Date(p.created_at).toLocaleDateString('es-CO')}
 
 
                   
@@ -189,10 +196,11 @@ Código: {p.codigo||'—'} · {new Date(p.created_at).toLocaleDateString('es-CO'
             
 
           
-        )}
 
+        )}
         {tab==='estudiantes' && (
-          <>
+          
+
             
 
 Estudiantes registrados
@@ -202,7 +210,7 @@ Estudiantes registrados
 
               {estudiantes.length===0 && 
 
-No hay estudiantes aún. Los profesores los inscriben en sus grupos.
+No hay estudiantes aun. Los profesores los inscriben en sus grupos.
 
 }
               {estudiantes.map(e=>(
@@ -222,7 +230,7 @@ No hay estudiantes aún. Los profesores los inscriben en sus grupos.
 
                     
 
-Código: {e.codigo||'—'} · {new Date(e.created_at).toLocaleDateString('es-CO')}
+Codigo: {e.codigo||'-'} - {new Date(e.created_at).toLocaleDateString('es-CO')}
 
 
                   
@@ -235,10 +243,11 @@ Código: {e.codigo||'—'} · {new Date(e.created_at).toLocaleDateString('es-CO'
             
 
           
-        )}
 
+        )}
         {tab==='grupos' && (
-          <>
+          
+
             
 
 Todos los grupos
@@ -248,7 +257,7 @@ Todos los grupos
 
               {grupos.length===0 && 
 
-No hay grupos creados aún.
+No hay grupos creados aun.
 
 }
               {grupos.map(g=>(
@@ -263,7 +272,7 @@ No hay grupos creados aún.
 
                     
 
-Profesor: {g.profiles?.full_name||'—'} · {g.horario||'Sin horario'}
+Profesor: {g.profiles?.full_name||'-'} - {g.horario||'Sin horario'}
 
 
                   
@@ -275,9 +284,11 @@ Profesor: {g.profiles?.full_name||'—'} · {g.horario||'Sin horario'}
             
 
           
+
         )}
       
 
     
+
   )
 }
