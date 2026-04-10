@@ -16,15 +16,8 @@ export default function Home() {
       else router.push('/estudiante')
     })
   }, [router])
-  return (
-    
-
-      
-
-Cargando...
-
-
-    
-
+  return React.createElement('div',
+    {style:{display:'flex',alignItems:'center',justifyContent:'center',minHeight:'100vh'}},
+    React.createElement('p', {style:{color:'#888',fontSize:14}}, 'Cargando...')
   )
 }
