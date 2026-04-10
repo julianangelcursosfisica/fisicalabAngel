@@ -5,6 +5,7 @@ import { createClient } from '../lib/supabase'
 
 export default function Home() {
   const router = useRouter()
+
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getSession().then(async ({ data: { session } }) => {
@@ -16,15 +17,10 @@ export default function Home() {
       else router.push('/estudiante')
     })
   }, [router])
+
   return (
-    
-
-      
-
-Cargando...
-
-
-    
-
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', background: '#0f172a' }}>
+      <p style={{ color: '#94a3b8', fontSize: '1.1rem' }}>Cargando...</p>
+    </div>
   )
 }
