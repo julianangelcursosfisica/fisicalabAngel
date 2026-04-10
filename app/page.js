@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '../lib/supabase'
 
@@ -16,8 +16,15 @@ export default function Home() {
       else router.push('/estudiante')
     })
   }, [router])
-  return React.createElement('div',
-    {style:{display:'flex',alignItems:'center',justifyContent:'center',minHeight:'100vh'}},
-    React.createElement('p', {style:{color:'#888',fontSize:14}}, 'Cargando...')
+  return (
+    
+
+      
+
+Cargando...
+
+
+    
+
   )
 }
