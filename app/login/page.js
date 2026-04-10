@@ -30,10 +30,12 @@ export default function LoginPage() {
       setLoading(false)
       return
     }
-    if (profile?.role === 'admin') router.push('/admin')
-    else if (profile?.role === 'profesor') router.push('/profesor')
-    else router.push('/estudiante')
-  }
+    if (!profile?.activo && profile?.role !== 'admin') {
+  await supabase.auth.signOut()
+  setError('Tu cuenta esta desactivada.')
+  setLoading(false)
+  return
+}
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', padding: '1rem', background: '#f5f5f0' }}>
